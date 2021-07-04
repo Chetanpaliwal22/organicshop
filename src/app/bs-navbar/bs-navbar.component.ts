@@ -1,15 +1,22 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'bs-navbar',
   templateUrl: './bs-navbar.component.html',
-  styleUrls: ['./bs-navbar.component.css']
+  styleUrls: ['./bs-navbar.component.css'],
+  providers: [AngularFireAuth]
 })
-export class BsNavbarComponent implements OnInit {
+export class BsNavbarComponent {
 
-  constructor() { }
+  constructor(private afAuth: AngularFireAuth) {
+   }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
   }
 
 }
